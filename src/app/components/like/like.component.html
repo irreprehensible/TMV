@@ -1,0 +1,6 @@
+<p>like works!</p>
+<span class="fas fa-heart" 
+    [class.liked]="isLiked"
+    [class.unliked]="!isLiked"
+    (click)="onClick()"
+    ></span><span [class.hide]="likeCount===0">{{likeCount}}</span>

@@ -1,0 +1,9 @@
+.liked{
+    color:darkred;
+}
+.unliked{
+    color: darkgrey;
+}
+.hide{
+    display: none;
+}

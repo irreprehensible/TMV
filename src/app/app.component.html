@@ -1,0 +1,55 @@
+
+<navbar></navbar>
+<br>
+<div>
+  <tabs>
+  <tab tabTitle="home" icon="fa fa-home" [active]='true'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <home-link titleHead="maps" icon='../assets/map-icon.png' type="maplist" (onItemClick)="onOpenMap($event)"></home-link>
+        </div>
+        <div class="col-md-4">
+          <home-link titleHead="trains" icon='../assets/train-icon.png' type="trainlist" (onItemClick)="onOpenTrain($event)"></home-link>
+        </div>
+        <div class="col-md-4">
+          <home-link titleHead="routes" icon='../assets/map-icon.png' type="routelist" (onItemClick)="onOpenRoute($event)"></home-link>
+        </div>
+      </div>
+    </div>
+  </tab>
+  </tabs>
+</div>
+
+<ng-template #about>
+  <p>
+    Hi, I hope this demo was useful to learn more about dynamic components
+    in Angular, in specific about <code>ViewContainerRef</code>,
+    <code>ComponentResolverFactory</code> etc.
+  </p>
+  <p>
+    Also check out the <a href="https://juristr.com/blog/2017/07/ng2-dynamic-tab-component/">according blog article</a>. You
+    may also want to read the <a href="https://juristr.com/blog/2016/02/learning-ng2-creating-tab-component/">article about
+    creating basic tabs with <code>@ContentChildren</code> and <code>@QueryList</code></a>.
+  </p>
+  <p>
+    Visit me on <a href="https://twitter.com/juristr">Twitter</a> or on <a href="https://juristr.com/blog">blog</a>.
+  </p>
+</ng-template>
+
+<ng-template let-obj="obj" #map>
+  <div class="container">
+    <h1>map template</h1>
+    <map [obj]="obj"></map>
+  </div>
+</ng-template>
+
+<ng-template let-obj="obj" #train>
+  <div>
+
+  </div>
+</ng-template>
+
+<ng-template let-obj="obj"#route>
+  <div></div>
+</ng-template>

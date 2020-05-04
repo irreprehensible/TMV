@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TrainsSVCService {
+  t:train []=[
+    {id:'t1',name:'train 1'},
+    {id:'t2',name:'train 2'},
+    {id:'t3',name:'train 3'},
+    {id:'t4',name:'train 4'},
+    {id:'t5',name:'train 5'},
+    {id:'t6',name:'train 6'},
+    {id:'t7',name:'train 7'},
+    {id:'t8',name:'train 8'},
+    {id:'t9',name:'train 9'},
+  ]; 
+  getTrainList(){
+    return this.t;
+  }
+  constructor() { }
+}
+interface train{
+  id:any;
+  name:string
+}

@@ -1,0 +1,7 @@
+.pane{
+    padding: 1em;
+  }
+  .content{
+    border:1px solid red;
+    margin: 1px;
+  }

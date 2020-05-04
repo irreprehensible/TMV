@@ -1,0 +1,47 @@
+div img{
+    width:48px;
+    height: 51px;
+}
+div span{
+    font-family: monospace;
+    font-size:x-large;
+    font-weight: 600;
+}
+div ul li span{
+    font-family: monospace;
+    font-size:medium;
+    font-weight: 600;
+}
+.inner{
+    height: 200px;
+    width: 100%;
+    border: 1px solid lightgray;
+    overflow-y: scroll;
+    background-color: #d3d3d3;
+    
+}
+.inner::webkit-scrollbar{width: 5px}
+input{
+    border: darkgrey 1px solid;
+    
+    padding: 3px;
+    border-radius: 4px;
+    width: 100%;
+}
+.listItem{
+    
+    list-style: none;
+    cursor: pointer;
+    background-color: lightsteelblue;
+}
+.listItem li{
+    margin: 3px;
+}
+.list-group-item{
+    padding:2px;
+    padding-left: 9px;
+    cursor: pointer;
+}
+.list-group-item:hover{
+    background-color:aliceblue;
+}

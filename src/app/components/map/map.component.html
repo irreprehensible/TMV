@@ -1,0 +1,10 @@
+<div><h2>Map id: {{map.id}}</h2></div>
+<div [style.background-color]="connected?'green':'red'">{{connected}}</div>
+<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" [usePanning]='true' >
+  <agm-marker  
+  *ngFor="let m of markers; let i = index"
+  [latitude]="m.lat"
+  [longitude]="m.lng"
+  ></agm-marker>
+</agm-map>
+{{markers.length}}

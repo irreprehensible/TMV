@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
   // initial center position for the map
   lat: number = 51.673858;
   lng: number = 7.815982;
-  zoom: number = 7; 
+  zoom: number = 10;
   // onCenterChange(latlng){
   //   console.log('center changed', latlng);
   // }
@@ -27,8 +27,16 @@ export class MapComponent implements OnInit {
   //     this.map=map;
      
   // }
-  
-
+  onZoomChanged(e){
+    console.log(e.target.value)
+    this.zoom = e.target.value
+  }
+  onMinusClick(){
+    this.zoom--;
+  }
+  onPlusClick(){
+    this.zoom++;
+  }
   markers: marker[] = [];
   constructor(private _routes:RouteService) {
     this.routes=_routes;

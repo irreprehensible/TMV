@@ -1,10 +1,13 @@
 <div>
   <div class="mapToolbar">
-    <div style="display: inline-block;width: 100px;height:90%;border:1px solid gray;padding: 2px;vertical-align: middle;">
-      
-        <input type="range" id="zoom" name="zoom" min="0" max="100" value="10" #zoom>
-      
-    </div>
+    <div class="zoomToolBox">
+          <div class="zoomText">{{zoom}}</div>
+          <span><button  class="zoomBtn" (click)="onMinusClick()"><i class="fa fa-minus fa-xs marginL"></i></button></span>
+          <span style="margin:6px">
+            <input type="range" id="zoom" name="zoom" min="0" max="100" value="{{zoom}}" style="margin-top: 6px;" (change)="onZoomChanged($event)">
+          </span>
+          <span><button class="zoomBtn" (click)="onPlusClick()"><i class="fa fa-plus marginL"></i></button></span>
+      </div>
     <div [style.background-color]="connected?'green':'red'" class="conn"></div>
   </div>
 

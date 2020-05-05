@@ -2,12 +2,33 @@ agm-map {
     height: 500px;
     width: 500px;
   }
+.zoomText{
+  position: absolute;
+          z-index: 3;
+          background-color: slategray;
+          color: white;
+          top: 0;
+          left: 7%;
+          font-size: x-small;
+}
 .mapToolbar{
   position:relative;
   top:0;
   width:100%;
-  height:42px;
-  border:2px ridge gray;
+  height:47px;
+  border:5px outset #ccc;
+  background-color:rgb(247, 243, 243);
+}
+.mapToolbar .zoomToolBox{
+  display: inline-block;
+  width: 179px;
+  height:90%;
+  padding: 2px;
+  margin-top: 2px;
+}
+.mapToolbar .zoomToolBox .zoomBtn{
+  width: 16px;
+  vertical-align: top;
 }
 .mapToolbar .conn{
   width: 32px;
@@ -15,5 +36,10 @@ agm-map {
   border-radius: 100%;
   border:1px solid #DDD;
   display: inline-block;
+  margin-top: 3px;
+  margin-right: 2px;
   float: right;
+}
+.marginL{
+  margin-left: -5px;
 }

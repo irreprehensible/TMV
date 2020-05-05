@@ -11,7 +11,6 @@ import { RouteService } from '../../services/route-svc.service';
 })
 export class MapComponent implements OnInit {
   @Input() obj:any;
-  mapid:any
   map:any
   routes:any
   connected:boolean
@@ -38,7 +37,6 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     
     this.map=this.obj;
-    console.log('id',this.mapid);
     this.routes.getServerSentEvent(`http://localhost:3000/routes`).subscribe(data => {
       
       switch (data.type) {

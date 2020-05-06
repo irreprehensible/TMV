@@ -1,13 +1,23 @@
 <div>
   <div class="mapToolbar">
     <div class="zoomToolBox">
-          <div class="zoomText">{{zoom}}</div>
+          <span class="zoomText">Zoom</span>
           <span><button  class="zoomBtn" (click)="onMinusClick()"><i class="fa fa-minus fa-xs marginL"></i></button></span>
           <span style="margin:6px">
             <input type="range" id="zoom" name="zoom" min="0" max="100" value="{{zoom}}" style="margin-top: 6px;" (change)="onZoomChanged($event)">
           </span>
           <span><button class="zoomBtn" (click)="onPlusClick()"><i class="fa fa-plus marginL"></i></button></span>
-      </div>
+          <span class="zoomText">{{zoom}}%</span>
+    </div>
+    <div class="zoomToolBox">
+        <span class="zoomText">Pan</span>
+        <span><button  class="zoomBtn" (click)="onMinusPanClick()"><i class="fa fa-minus fa-xs marginL"></i></button></span>
+        <span style="margin:6px">
+          <input type="range" id="zoom" name="zoom" min="0" max="100" value="{{pan}}" style="margin-top: 6px;" (change)="onPanChanged($event)">
+        </span>
+        <span><button class="zoomBtn" (click)="onPlusPanClick()"><i class="fa fa-plus marginL"></i></button></span>
+        <span class="zoomText">{{pan}}%</span>
+    </div>
     <div [style.background-color]="connected?'green':'red'" class="conn"></div>
   </div>
 
@@ -18,6 +28,6 @@
   [longitude]="m.lng"
   ></agm-marker>
 </agm-map> -->
-<canvas width="100%" height="100%"></canvas>
+<canvas #canvas></canvas>
 {{markers.length}}
 </div>

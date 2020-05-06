@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 //import { AgmMap } from '@agm/core';
 import { RouteService } from '../../services/route-svc.service';
 
@@ -9,24 +9,28 @@ import { RouteService } from '../../services/route-svc.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
-  @Input() obj:any;
+export class MapComponent implements OnInit,AfterViewInit {
+  @Input() obj:any; // for the map sent via tabs
+  @ViewChild('canvas') public canvas: ElementRef; 
+
+  @Input() public width = 400;
+  @Input() public height = 400;
+
+  private cx: CanvasRenderingContext2D;
+
   map:any
   routes:any
   connected:boolean
   
   // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  // lat: number = 51.673858;
+  // lng: number = 7.815982;
   zoom: number = 10;
-  // onCenterChange(latlng){
-  //   console.log('center changed', latlng);
-  // }
-  // public getMapInstance(map) {
-  //    console.log(map);
-  //     this.map=map;
-     
-  // }
+  pan:number = 10;
+
+  constructor(private _routes:RouteService) {
+    this.routes=_routes;
+  }
   onZoomChanged(e){
     console.log(e.target.value)
     this.zoom = e.target.value
@@ -37,11 +41,27 @@ export class MapComponent implements OnInit {
   onPlusClick(){
     this.zoom++;
   }
+  onPanChanged(e){
+    console.log(e.target.value)
+    this.pan = e.target.value
+  }
+  onMinusPanClick(){
+    this.pan--;
+  }
+  onPlusPanClick(){
+    this.pan++;
+  }
   markers: marker[] = [];
-  constructor(private _routes:RouteService) {
-    this.routes=_routes;
-   }
+  
+  ngAfterViewInit(){
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    this.cx = canvasEl.getContext('2d');
 
+    canvasEl.width = this.width;
+    canvasEl.height = this.height;
+
+    
+  }
   ngOnInit(): void {
     
     this.map=this.obj;
@@ -55,19 +75,19 @@ export class MapComponent implements OnInit {
           }
           break;
         case 'message':
-          this.connected=true;
-          let r = JSON.parse(data.data).route;
-          this.lat=r.lat;
-          this.lng  =r.lng;
-          //this.map.setCenter();
-          this.markers.push({
-              lat:r.lat,
-              lng:r.lng,
-              //label: 'A',
-            });
-          if(this.markers.length > 3){
-              this.markers.shift();
-            }    
+          // this.connected=true;
+          // let r = JSON.parse(data.data).route;
+          // this.lat=r.lat;
+          // this.lng  =r.lng;
+          // //this.map.setCenter();
+          // this.markers.push({
+          //     lat:r.lat,
+          //     lng:r.lng,
+          //     //label: 'A',
+          //   });
+          // if(this.markers.length > 3){
+          //     this.markers.shift();
+          //   }    
           break;
       
         default:

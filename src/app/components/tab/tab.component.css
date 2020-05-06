@@ -1,7 +1,7 @@
 .pane{
-    padding: 1em;
+    padding: 5px;
   }
   .content{
-    border:1px solid red;
+    border:1px solid #EEE;
     margin: 1px;
   }

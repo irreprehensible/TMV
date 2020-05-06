@@ -42,8 +42,13 @@ agm-map {
   display: inline-block;
   margin-top: 3px;
   margin-right: 2px;
-  float: right;
+  /* float: right; */
 }
 .marginL{
   margin-left: -5px;
+}
+.canvasContainer{
+  padding:1px;
+  border:dashed 2px #000;
+  height: 470px;
 }

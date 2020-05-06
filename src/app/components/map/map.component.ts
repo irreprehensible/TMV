@@ -12,9 +12,10 @@ import { RouteService } from '../../services/route-svc.service';
 export class MapComponent implements OnInit,AfterViewInit {
   @Input() obj:any; // for the map sent via tabs
   @ViewChild('canvas') public canvas: ElementRef; 
+  @ViewChild('canvasContainer') public canvasContainer: ElementRef; 
 
-  @Input() public width = 400;
-  @Input() public height = 400;
+  width = 400;
+  height = 400;
 
   private cx: CanvasRenderingContext2D;
 
@@ -57,9 +58,20 @@ export class MapComponent implements OnInit,AfterViewInit {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.cx = canvasEl.getContext('2d');
 
+    //get dimentions
+    console.log(this.canvasContainer.nativeElement.offsetWidth)
+    console.log(this.canvasContainer.nativeElement.offsetHeight)
+    this.height = this.canvasContainer.nativeElement.offsetHeight?this.canvasContainer.nativeElement.offsetHeight:161;
+    this.width=this.canvasContainer.nativeElement.offsetWidth?this.canvasContainer.nativeElement.offsetWidth:1195
+    //set the dimentions
     canvasEl.width = this.width;
     canvasEl.height = this.height;
-
+    
+    this.cx.fillStyle = "#000";
+    this.cx.fillText("SAUD",10,10,100);
+    this.cx.fillRect(20,20,500,200)
+  }
+  redraw(){
     
   }
   ngOnInit(): void {

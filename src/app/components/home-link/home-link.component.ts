@@ -63,6 +63,7 @@ export class HomeLinkComponent implements OnInit {
         this.fullitemList = this.trainList.getTrainList();
         this.items = this.fullitemList;
       case "routelist":
+        this.items = [];
         this.items.push({name:'route1'});
         this.fullitemList = this.items;
       default:

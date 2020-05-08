@@ -15,6 +15,7 @@ export class HomeLinkComponent implements OnInit {
  @Input('icon') icon:string;
  @Input('type') type:string;
  @Output() onItemClick = new EventEmitter();
+ @Output() onItemRightClick = new EventEmitter();
 
   items:any = [];
   fullitemList =[];
@@ -23,7 +24,16 @@ export class HomeLinkComponent implements OnInit {
   private onClick() {
     console.log('onClick');
   }
-  
+  itemRightClicked(e,item){
+    let eventObj ={
+      event:e,
+      item:item
+    }
+    console.log('[right clicked home link] item:',item)
+    console.log(e.clientX+','+e.clientY);
+    this.onItemRightClick.emit(eventObj);
+    return false;
+  }
   itemClicked(item){
     //alert(`${id} clicked`);
     this.onItemClick.emit(item);

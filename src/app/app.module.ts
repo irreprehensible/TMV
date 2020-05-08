@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TimeComponent } from './components/time/time.component';
 import { TimeSVCService } from './services/time-svc.service';
 import { TrainsSVCService } from './services/trains-svc.service';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TrainsSVCService } from './services/trains-svc.service';
     TabComponent,
     DynamicTabsDirective,
     NavbarComponent,
-    TimeComponent
+    TimeComponent,
+    ContextMenuComponent
   ],
   imports: [
     BrowserModule,

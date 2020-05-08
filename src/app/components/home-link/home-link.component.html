@@ -3,7 +3,7 @@
     <div><input placeholder="search" (keyup)="changed(searchText)" #searchText id="{{ type }}"/></div>
     <div class="inner">
         <ul class="list-group">
-            <li *ngFor="let item of items"  (click)="itemClicked(item)" class="list-group-item">
+            <li *ngFor="let item of items"  (click)="itemClicked(item)" (contextmenu)="itemRightClicked($event,item)" class="list-group-item">
                 <span >{{item.name}}</span>
             </li>
         </ul>

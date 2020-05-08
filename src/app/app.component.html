@@ -1,4 +1,3 @@
-
 <navbar></navbar>
 <br>
 <div>
@@ -7,13 +6,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <home-link titleHead="maps" icon='../assets/map-icon.png' type="maplist" (onItemClick)="onOpenMap($event)"></home-link>
+          <home-link titleHead="maps" icon='../assets/map-icon.png' type="maplist" (onItemClick)="onOpenMap($event)" (onItemRightClick)="showMenu($event)"></home-link>
         </div>
         <div class="col-md-4">
-          <home-link titleHead="trains" icon='../assets/train-icon.png' type="trainlist" (onItemClick)="onOpenTrain($event)"></home-link>
+          <home-link titleHead="trains" icon='../assets/train-icon.png' type="trainlist" (onItemClick)="onOpenTrain($event)" (onItemRightClick)="showMenu($event)"></home-link>
         </div>
         <div class="col-md-4">
-          <home-link titleHead="routes" icon='../assets/map-icon.png' type="routelist" (onItemClick)="onOpenRoute($event)"></home-link>
+          <home-link titleHead="routes" icon='../assets/map-icon.png' type="routelist" (onItemClick)="onOpenRoute($event)" (onItemRightClick)="showMenu($event)"></home-link>
         </div>
       </div>
     </div>
@@ -21,22 +20,10 @@
   </tabs>
 </div>
 
-<ng-template #about>
-  <p>
-    Hi, I hope this demo was useful to learn more about dynamic components
-    in Angular, in specific about <code>ViewContainerRef</code>,
-    <code>ComponentResolverFactory</code> etc.
-  </p>
-  <p>
-    Also check out the <a href="https://juristr.com/blog/2017/07/ng2-dynamic-tab-component/">according blog article</a>. You
-    may also want to read the <a href="https://juristr.com/blog/2016/02/learning-ng2-creating-tab-component/">article about
-    creating basic tabs with <code>@ContentChildren</code> and <code>@QueryList</code></a>.
-  </p>
-  <p>
-    Visit me on <a href="https://twitter.com/juristr">Twitter</a> or on <a href="https://juristr.com/blog">blog</a>.
-  </p>
-</ng-template>
-
+<!-- <div *ngIf="showContextMenu; then contextMenu"></div> -->
+<!-- <ng-template let-eventObj="eventObj" #contextMenu> -->
+  <context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu"></context-menu>
+<!-- </ng-template> -->
 <ng-template let-obj="obj" #map>
   <map [obj]="obj"></map>
 </ng-template>

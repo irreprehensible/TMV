@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { LikeComponent } from './components/like/like.component';
 import { MapComponent } from './components/map/map.component';
-import { AgmCoreModule } from '@agm/core';
+// import { AgmCoreModule } from '@agm/core';
 import { SseSVCService } from './services/sse-svc.service';
 import { RouteService } from './services/route-svc.service';
 import { HomeLinkComponent } from './components/home-link/home-link.component';
@@ -30,9 +29,9 @@ import { TrainsSVCService } from './services/trains-svc.service';
   ],
   imports: [
     BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey:''
-    })
+    // AgmCoreModule.forRoot({
+    //   apiKey:''
+    // })
   ],
   providers: [
     SseSVCService,

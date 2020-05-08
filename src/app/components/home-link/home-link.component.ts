@@ -17,9 +17,7 @@ export class HomeLinkComponent implements OnInit {
  @Output() onItemClick = new EventEmitter();
 
   items:any = [];
-  fullMapList =[];
-  fullTrainList =[];
-  fullRouteList =[];
+  fullitemList =[];
   mapList: MapListSvcService;
   trainList:TrainsSVCService;
   private onClick() {
@@ -35,22 +33,8 @@ export class HomeLinkComponent implements OnInit {
     this.trainList = _trainList;
   }
   changed(searchText : HTMLInputElement){
-    switch (searchText.id) {
-      case "maplist":
-        this.items = searchText ? this.performfilter(searchText.value,this.fullMapList):this.fullMapList;
-        break;
-      case "trainlist":
-        this.items = searchText ? this.performfilter(searchText.value,this.fullTrainList):this.fullTrainList;
-        break;
-        case "routelist":
-          this.items = searchText ? this.performfilter(searchText.value,this.fullRouteList):this.fullRouteList;
-          break;
-      default:
-        break;
-    }
-    // console.log(e.path[0].id);
-
-    
+      this.items = searchText ? this.performfilter(searchText.value,this.fullitemList):this.fullitemList;
+     // console.log(e.path[0].id);
   }
   performfilter = function (searchtext:string,FullList) {
       let filterby = searchtext.toLocaleLowerCase();
@@ -62,15 +46,15 @@ export class HomeLinkComponent implements OnInit {
   ngOnInit(): void {
     switch (this.type) {
       case "maplist":
-        this.fullMapList = this.mapList.getMapList();
-        this.items = this.fullMapList;
+        this.fullitemList = this.mapList.getMapList();
+        this.items = this.fullitemList;
         break;
       case "trainlist":
-        this.fullTrainList = this.trainList.getTrainList();
-        this.items = this.fullTrainList;
+        this.fullitemList = this.trainList.getTrainList();
+        this.items = this.fullitemList;
       case "routelist":
         this.items.push({name:'route1'});
-        this.fullRouteList = this.items;
+        this.fullitemList = this.items;
       default:
         break;
     }

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { TabsComponent } from './components/tabs/tabs.component';
-import{ ContextMenuComponent } from './components/context-menu/context-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,6 @@ export class AppComponent {
   @ViewChild('map') mapTemplate;
   @ViewChild('train') trainTemplate;
   @ViewChild('route') routeTemplate
-  // @ViewChild(ContextMenuComponent) contextMenuTemplate;
   @ViewChild(TabsComponent) tabsComponent;
   showContextMenu:boolean
   eventObj:any
@@ -39,14 +37,25 @@ export class AppComponent {
     if(eventObj)
     this.showContextMenu=true
     console.log('[appcomponent]',eventObj);
-    // let ctxObj={
-    //   eventObj:eventObj,
-    //   showContextMenu:this.showContextMenu
-    // }
-    // this.contextMenuTemplate.activate(ctxObj);
   }
   private hideMenu(){
     this.showContextMenu=false;
+  }
+  onOpenclick(openObj){
+    console.log('[openclick]',openObj);
+    switch (openObj.type) {
+      case "maplist":
+          this.onOpenMap(openObj.item);
+        break;
+        case "trainlist":
+          this.onOpenTrain(openObj.item);
+        break;
+        case "routelist":
+          this.onOpenRoute(openObj.item);
+        break;
+      default:
+        break;
+    }
   }
   onOpenMap(obj){
     let icon = 'fa fa-map'

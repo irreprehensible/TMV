@@ -1,28 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'context-menu',
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.css']
 })
-export class ContextMenuComponent implements OnInit {
+export class ContextMenuComponent{
 
   @Input() x = 0;
   @Input() y = 0;
   @Input() eventObj:any;
+  @Output() openClick = new EventEmitter();
   showContextMenu:boolean;
-  @Input() dataContext;
-  @Input() template;
-  
-  constructor() { 
-    console.log('[cm comp.]',this.eventObj);
-  }
-  activate(ctxObj){
-    // this.showContextMenu = ctxObj.showContextMenu;
-    // this.x = ctxObj.eventObj.clientX;
-    // this.y = ctxObj.eventObj.clientY;
-  }
-  ngOnInit(): void {
-  }
 
+  onOpenClick(){
+    console.log('[cm comp.]',this.eventObj);
+    let obj ={
+      type: this.eventObj.event.path[4].attributes[3].value, //this is a BUG!!!!!!!!!!!!!!!
+      item:this.eventObj.item
+    }
+    this.openClick.emit(obj);
+  }
 }

@@ -20,18 +20,14 @@
   </tabs>
 </div>
 
-<!-- <div *ngIf="showContextMenu; then contextMenu"></div> -->
-<!-- <ng-template let-eventObj="eventObj" #contextMenu> -->
-  <context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu"></context-menu>
-<!-- </ng-template> -->
+<context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (openClick)="onOpenclick($event)"></context-menu>
+
 <ng-template let-obj="obj" #map>
   <map [obj]="obj"></map>
 </ng-template>
 
 <ng-template let-obj="obj" #train>
-  <div>
-
-  </div>
+  <div></div>
 </ng-template>
 
 <ng-template let-obj="obj"#route>

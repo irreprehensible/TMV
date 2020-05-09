@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RouteService {
+export class MapDataService {
 
   constructor(private _zone:NgZone,private _sseService: SseSVCService) {  }
 

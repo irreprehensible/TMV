@@ -5,7 +5,7 @@ import { LikeComponent } from './components/like/like.component';
 import { MapComponent } from './components/map/map.component';
 // import { AgmCoreModule } from '@agm/core';
 import { SseSVCService } from './services/sse-svc.service';
-import { RouteService } from './services/route-svc.service';
+import { MapDataService } from './services/map-data-svc.service';
 import { HomeLinkComponent } from './components/home-link/home-link.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TabComponent } from './components/tab/tab.component';
@@ -37,7 +37,7 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
   ],
   providers: [
     SseSVCService,
-    RouteService,
+    MapDataService,
     TimeSVCService,
     TrainsSVCService
   ],

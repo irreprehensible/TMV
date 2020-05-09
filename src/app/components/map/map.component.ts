@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 //import { AgmMap } from '@agm/core';
-import { RouteService } from '../../services/route-svc.service';
+import { MapDataService } from '../../services/map-data-svc.service';
 
 
 
@@ -20,7 +20,7 @@ export class MapComponent implements OnInit,AfterViewInit {
   private cx: CanvasRenderingContext2D;
 
   map:any
-  routes:any
+  mapdataservice:any
   connected:boolean
   
   // initial center position for the map
@@ -29,8 +29,8 @@ export class MapComponent implements OnInit,AfterViewInit {
   zoom: number = 10;
   pan:number = 10;
 
-  constructor(private _routes:RouteService) {
-    this.routes=_routes;
+  constructor(private _mapdataservice:MapDataService) {
+    this.mapdataservice=_mapdataservice;
   }
   onZoomChanged(e){
     console.log(e.target.value)
@@ -77,7 +77,7 @@ export class MapComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
     
     this.map=this.obj;
-    this.routes.getServerSentEvent(`http://localhost:3000/routes`).subscribe(data => {
+    this.mapdataservice.getServerSentEvent(`http://localhost:3000/routes`).subscribe(data => {
       
       switch (data.type) {
         case 'error':

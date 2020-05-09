@@ -15,6 +15,7 @@ import { TimeComponent } from './components/time/time.component';
 import { TimeSVCService } from './services/time-svc.service';
 import { TrainsSVCService } from './services/trains-svc.service';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { RouteSVCService } from './services/route-svc.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
     SseSVCService,
     MapDataService,
     TimeSVCService,
-    TrainsSVCService
+    TrainsSVCService,
+    RouteSVCService
   ],
   bootstrap: [AppComponent]
 })

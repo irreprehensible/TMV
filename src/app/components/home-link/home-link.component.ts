@@ -3,6 +3,7 @@ import { MapListSvcService } from '../../services/map-list-svc.service';
 import { TabComponent } from '../tab/tab.component';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TrainsSVCService } from 'src/app/services/trains-svc.service';
+import { RouteSVCService } from 'src/app/services/route-svc.service';
 
 @Component({
   selector: 'home-link',
@@ -21,6 +22,7 @@ export class HomeLinkComponent implements OnInit {
   fullitemList =[];
   mapList: MapListSvcService;
   trainList:TrainsSVCService;
+  routelist:RouteSVCService;
   private onClick() {
     console.log('onClick');
   }
@@ -38,9 +40,10 @@ export class HomeLinkComponent implements OnInit {
     //alert(`${id} clicked`);
     this.onItemClick.emit(item);
   }
-  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService) { 
+  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService, private _routelist:RouteSVCService) { 
     this.mapList = _mapList;
     this.trainList = _trainList;
+    this.routelist = _routelist;
   }
   changed(searchText : HTMLInputElement){
       this.items = searchText ? this.performfilter(searchText.value,this.fullitemList):this.fullitemList;
@@ -62,10 +65,11 @@ export class HomeLinkComponent implements OnInit {
       case "trainlist":
         this.fullitemList = this.trainList.getTrainList();
         this.items = this.fullitemList;
+        break;
       case "routelist":
-        this.items = [];
-        this.items.push({name:'route1'});
-        this.fullitemList = this.items;
+        this.fullitemList = this.routelist.getRouteList();
+        this.items = this.fullitemList;
+        break;
       default:
         break;
     }

@@ -15,12 +15,21 @@
           <home-link titleHead="routes" icon='../assets/route-icon.png' type="routelist" (onItemClick)="onOpenRoute($event)" (onItemRightClick)="showMenu($event)"></home-link>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <home-link titleHead="locations" icon="../assets/location-icon.png" type="locationlist" ></home-link>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-7">
+          <home-link titleHead="users" icon="../assets/users-icon.png" type="userlist" ></home-link>
+        </div>
+      </div>
     </div>
   </tab>
   </tabs>
 </div>
 
-<context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (openClick)="onOpenclick($event)"></context-menu>
+<context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (tabClick)="onTabclick($event)"></context-menu>
 
 <ng-template let-obj="obj" #map>
   <map [obj]="obj"></map>

@@ -36,12 +36,12 @@ export class AppComponent {
     this.yPosTabMenu = eventObj.event.clientY;
     if(eventObj)
     this.showContextMenu=true
-    console.log('[appcomponent]',eventObj);
+    //console.log('[appcomponent]',eventObj);
   }
   private hideMenu(){
     this.showContextMenu=false;
   }
-  onOpenclick(openObj){
+  onTabclick(openObj){
     console.log('[openclick]',openObj);
     switch (openObj.type) {
       case "maplist":

@@ -10,15 +10,15 @@ export class ContextMenuComponent{
   @Input() x = 0;
   @Input() y = 0;
   @Input() eventObj:any;
-  @Output() openClick = new EventEmitter();
+  @Output() tabClick = new EventEmitter();
   showContextMenu:boolean;
 
-  onOpenClick(){
+  onTabClick(){
     console.log('[cm comp.]',this.eventObj);
     let obj ={
       type: this.eventObj.event.path[4].attributes[3].value, //this is a BUG!!!!!!!!!!!!!!!
       item:this.eventObj.item
     }
-    this.openClick.emit(obj);
+    this.tabClick.emit(obj);
   }
 }

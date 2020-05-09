@@ -24,15 +24,15 @@ export class HomeLinkComponent implements OnInit {
   trainList:TrainsSVCService;
   routelist:RouteSVCService;
   private onClick() {
-    console.log('onClick');
+    //console.log('onClick');
   }
   itemRightClicked(e,item){
     let eventObj ={
       event:e,
       item:item
     }
-    console.log('[right clicked home link] item:',item)
-    console.log(e.clientX+','+e.clientY);
+    //console.log('[right clicked home link] item:',item)
+    //console.log(e.clientX+','+e.clientY);
     this.onItemRightClick.emit(eventObj);
     return false;
   }

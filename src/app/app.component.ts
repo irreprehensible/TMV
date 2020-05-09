@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, HostListener } from '@angular/core';
 
 import { TabsComponent } from './components/tabs/tabs.component';
 
@@ -15,7 +15,8 @@ export class AppComponent {
   @ViewChild('train') trainTemplate;
   @ViewChild('route') routeTemplate
   @ViewChild(TabsComponent) tabsComponent;
-  showContextMenu:boolean
+  showContextMenu:boolean;
+  showModalPopUp:boolean;
   eventObj:any
   xPosTabMenu: Number;
   yPosTabMenu: Number;
@@ -24,6 +25,13 @@ export class AppComponent {
     isLiked:false,
     likeCount:0
   };
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    //console.log('[key event modal]',event);
+    if(event.key=='Escape' && this.showModalPopUp)
+      this.showModalPopUp=false;
+
+  }
   incrLike(isLiked){
     console.log('liked',isLiked);
     if(isLiked) this.likeLoad.likeCount++;
@@ -38,10 +46,18 @@ export class AppComponent {
     this.showContextMenu=true
     //console.log('[appcomponent]',eventObj);
   }
+  onModalClick(openObj){
+    console.log('[modalclick]',openObj);
+    if(openObj)
+      this.showModalPopUp=true
+  }
+  hideModal(){
+    this.showModalPopUp=false
+  }
   private hideMenu(){
     this.showContextMenu=false;
   }
-  onTabclick(openObj){
+  onTabClick(openObj){
     console.log('[openclick]',openObj);
     switch (openObj.type) {
       case "maplist":
@@ -65,7 +81,6 @@ export class AppComponent {
     let icon='fa fa-train'
     this.tabsComponent.openTab(`${obj.name}`,this.trainTemplate,obj,true,icon);
   }
-
   onOpenRoute(obj){
     let icon='fas fa-route'
     this.tabsComponent.openTab(`${obj.name}`,this.routeTemplate,obj,true,icon);

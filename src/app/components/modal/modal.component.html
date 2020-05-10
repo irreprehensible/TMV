@@ -1,4 +1,4 @@
-<div class="modalPopUp">
+<div class="modalPopUp" [hidden]="!showModalPopUp">
     <ng-content></ng-content>
     <!-- <ng-container *ngIf="template"
       [ngTemplateOutlet]="template"

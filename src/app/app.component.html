@@ -30,7 +30,7 @@
 </div>
 
 <context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (tabClick)="onTabClick($event)" (modalClick)="onModalClick($event)"></context-menu>
-<modal [hidden]="!showModalPopUp">
+<modal [showModalPopUp]="showModalPopUp">
   hey wasssup
 </modal>
 

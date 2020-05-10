@@ -25,13 +25,7 @@ export class AppComponent {
     isLiked:false,
     likeCount:0
   };
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    //console.log('[key event modal]',event);
-    if(event.key=='Escape' && this.showModalPopUp)
-      this.showModalPopUp=false;
-
-  }
+  
   incrLike(isLiked){
     console.log('liked',isLiked);
     if(isLiked) this.likeLoad.likeCount++;
@@ -50,9 +44,6 @@ export class AppComponent {
     console.log('[modalclick]',openObj);
     if(openObj)
       this.showModalPopUp=true
-  }
-  hideModal(){
-    this.showModalPopUp=false
   }
   private hideMenu(){
     this.showContextMenu=false;

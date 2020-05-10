@@ -30,7 +30,7 @@ import { ModalComponent } from './components/modal/modal.component';
     NavbarComponent,
     TimeComponent,
     ContextMenuComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

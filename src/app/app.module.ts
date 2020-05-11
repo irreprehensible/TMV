@@ -17,6 +17,7 @@ import { TrainsSVCService } from './services/trains-svc.service';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { RouteSVCService } from './services/route-svc.service';
 import { ModalComponent } from './components/modal/modal.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModalComponent } from './components/modal/modal.component';
     TimeComponent,
     ContextMenuComponent,
     ModalComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

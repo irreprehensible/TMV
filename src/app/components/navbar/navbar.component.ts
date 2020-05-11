@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { TimeComponent } from '../time/time.component';
+import { UserComponent } from '../user/user.component'
 
 @Component({
   selector: 'navbar',

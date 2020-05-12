@@ -6,15 +6,22 @@ import { Component, Input, HostListener } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-  @Input() showModalPopUp:boolean
-
+  showModalPopUp:boolean
+  template;
+  dataContext;
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     //console.log('[key event modal]',event);
     if(event.key=='Escape' && this.showModalPopUp)
       this.showModalPopUp=false;
   }
-  hideModal(){
+  showModal(template,openObj){
+    this.showModalPopUp =true
+    this.template = template;
+    this.dataContext = openObj;
+    console.log('modal!',openObj)
+  }
+  public hideModal(){
     this.showModalPopUp=false
   }
 }

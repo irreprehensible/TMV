@@ -30,9 +30,7 @@
 </div>
 
 <context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (tabClick)="onTabClick($event)" (modalClick)="onModalClick($event)"></context-menu>
-<modal [showModalPopUp]="showModalPopUp">
-  hey wasssup
-</modal>
+<modal></modal>
 
 <ng-template let-obj="obj" #map>
   <map [obj]="obj"></map>

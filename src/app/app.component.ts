@@ -1,5 +1,5 @@
 import { Component, ViewChild, HostListener } from '@angular/core';
-
+import { ModalComponent } from './components/modal/modal.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 
 @Component({
@@ -15,6 +15,7 @@ export class AppComponent {
   @ViewChild('train') trainTemplate;
   @ViewChild('route') routeTemplate
   @ViewChild(TabsComponent) tabsComponent;
+  @ViewChild(ModalComponent) modalComponent;
   showContextMenu:boolean;
   showModalPopUp:boolean;
   eventObj:any
@@ -42,8 +43,22 @@ export class AppComponent {
   }
   onModalClick(openObj){
     console.log('[modalclick]',openObj);
-    if(openObj)
-      this.showModalPopUp=true
+    switch (openObj.type) {
+      case "maplist":
+          this.modalComponent.showModal(this.mapTemplate, openObj.item);
+        break;
+        case "trainlist":
+          this.modalComponent.showModal(this.trainTemplate, openObj.item);
+        break;
+        case "routelist":
+          this.modalComponent.showModal(this.routeTemplate, openObj.item);
+        break;
+      default:
+        break;
+    }
+    
+    // if(openObj)
+    //   this.showModalPopUp=true
   }
   private hideMenu(){
     this.showContextMenu=false;

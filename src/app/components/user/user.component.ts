@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { UserSVCService, user } from 'src/app/services/user-svc.service';
 
 @Component({
   selector: 'user',
@@ -7,7 +8,13 @@ import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@
 })
 export class UserComponent implements OnInit {
   showUserNav:boolean = false;
-  userAvatar = '../assets/user.gif'
+  user:user
+  userSVC
+  userAvatar// = '../assets/user.gif'
+  constructor(private _userSVC:UserSVCService) { 
+    this.userSVC = _userSVC 
+    
+  }
   @ViewChild('userMnu') userMnu:ElementRef
   @HostListener('window:click', ['$event.target'])
   onClick(targetElement:HTMLElement) {
@@ -23,9 +30,12 @@ export class UserComponent implements OnInit {
     this.showUserNav = !this.showUserNav;
   }
   
-  constructor() { }
+  
 
   ngOnInit(): void {
+    this.user = this.userSVC.getUser()
+    this.userAvatar = this.user.avatar 
+    console.log('from init',this.user.avatar)
   }
 
 }

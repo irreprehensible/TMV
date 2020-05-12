@@ -20,6 +20,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { UserComponent } from './components/user/user.component';
 import { AppErroHandler } from './common/app-error-handler';
 import { HttpClientModule } from '@angular/common/http';
+import { UserSVCService } from './services/user-svc.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     TimeSVCService,
     TrainsSVCService,
     RouteSVCService,
-    {provide:ErrorHandler, useClass:AppErroHandler}
+    UserSVCService
+    //{provide:ErrorHandler, useClass:AppErroHandler}
   ],
   bootstrap: [AppComponent]
 })

@@ -2,8 +2,8 @@ import { Component, OnInit,Input,Output,EventEmitter, ViewChild } from '@angular
 import { MapListSvcService } from '../../services/map-list-svc.service';
 import { TabComponent } from '../tab/tab.component';
 import { TabsComponent } from '../tabs/tabs.component';
-import { TrainsSVCService } from 'src/app/services/trains-svc.service';
-import { RouteSVCService } from 'src/app/services/route-svc.service';
+import { TrainsSVCService } from '../../services/trains-svc.service';
+import { RouteSVCService } from '../../services/route-svc.service';
 
 @Component({
   selector: 'home-link',

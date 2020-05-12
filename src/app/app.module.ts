@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LikeComponent } from './components/like/like.component';
 import { MapComponent } from './components/map/map.component';
@@ -18,6 +18,8 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
 import { RouteSVCService } from './services/route-svc.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { UserComponent } from './components/user/user.component';
+import { DataSVCService } from './services/data-svc.service';
+import { AppErroHandler } from './common/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { UserComponent } from './components/user/user.component';
     MapDataService,
     TimeSVCService,
     TrainsSVCService,
-    RouteSVCService
+    RouteSVCService,
+    {provide:ErrorHandler, useClass:AppErroHandler}
   ],
   bootstrap: [AppComponent]
 })

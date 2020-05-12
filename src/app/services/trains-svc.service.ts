@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { DataSVCService } from './data-svc.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TrainsSVCService {
+export class TrainsSVCService extends DataSVCService{
   t:train []=[
     {id:'t1',name:'train 1'},
     {id:'t2',name:'train 2'},
@@ -18,7 +20,9 @@ export class TrainsSVCService {
   getTrainList(){
     return this.t;
   }
-  constructor() { }
+  constructor(http:HttpClient) { 
+    super('',http)
+  }
 }
 interface train{
   id:any;

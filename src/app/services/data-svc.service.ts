@@ -2,7 +2,6 @@ import { Injectable, ErrorHandler } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import 'rxjs/add/operator/catch';
 import { NotFoundError } from '../common/not-found-error';
 import { AppError } from '../common/app-error';
 

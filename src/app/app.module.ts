@@ -18,8 +18,8 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
 import { RouteSVCService } from './services/route-svc.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { UserComponent } from './components/user/user.component';
-import { DataSVCService } from './services/data-svc.service';
 import { AppErroHandler } from './common/app-error-handler';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { AppErroHandler } from './common/app-error-handler';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     // AgmCoreModule.forRoot({
     //   apiKey:''
     // })

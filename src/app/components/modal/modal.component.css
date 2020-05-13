@@ -1,10 +1,35 @@
 .modalPopUp{
     position: absolute;
     height: 100%;
-    width: 99%;
+    width: 93%;
     background-color: white;
     z-index: 1000;
     top:3px;
-    border:1px solid red;
+    border:2px ridge #EEE;
     margin: 5px;
+    left:3%
 }
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .3;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+  }
+  .modal-close {
+    color: white;
+    text-align: right;
+    cursor: pointer;
+    background-color:rgb(63, 62, 62);
+    border-radius: 100%;
+    padding: 2px;
+    margin-bottom: 2px;
+    vertical-align: text-top;
+    margin-left: 5px;
+    float: right;
+    }

@@ -12,8 +12,8 @@ export class UserSVCService {
  }
  getUser(){
    const p:Promise<user> = new Promise((resolve, reject)=>{
-     //resolve(this.user);
-     reject(new Error('user no found'))
+     resolve(this.user);
+    //  reject(new Error('user no found'))
    })
    return p;
  }

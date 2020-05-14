@@ -13,8 +13,13 @@ export class RouteSVCService {
   ]; 
   getRouteList(){
     const p:Promise<route[]> = new Promise((resolve, reject) =>{
-      resolve(this.r)
-      //reject(new Error('Could not retrieve trains'));
+      setTimeout(() => {
+        resolve(this.r)
+      }, 3000);
+      // setTimeout(() => {
+      //   reject(new Error('Could not retrieve routes'));  
+      // }, 2000);
+      
     })
     return p;
   }

@@ -22,7 +22,7 @@ export class HomeLinkComponent implements OnInit {
 
   items:any = [];
   fullitemList =[];
-  notFoundMsg:string;
+  notFoundMsg:string="";
   mapList: MapListSvcService;
   trainList:TrainsSVCService;
   routeList:RouteSVCService;

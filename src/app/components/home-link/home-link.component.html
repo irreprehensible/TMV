@@ -3,6 +3,10 @@
     <div><input placeholder="search" (keyup)="changed(searchText)" #searchText id="{{ type }}"/></div>
     <div class="inner">
         <ul class="list-group">
+            <!-- <div *ngIf="notFoundMsg === '' && items.length===0; then loading"></div> -->
+            <div [hidden]="items.length > 0 || notFoundMsg!=''" #loading>
+                loading....
+            </div>
             <div *ngIf="items.length >0; then itemList else noItems"></div>
             <ng-template #noItems>
                 <div class="alert">{{notFoundMsg}}</div>

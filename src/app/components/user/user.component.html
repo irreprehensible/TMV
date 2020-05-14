@@ -1,10 +1,11 @@
 <div class="dropdown user" #user style="margin-top: -12px;" id=userComponent (click)="toggleUserNav()">
     <div class="dropdown-toggle user" data-toggle="dropdown"  >
-        <img [src]="userAvatar" class="img-fluid user" style="width: 50%;">
+        <img [src]="userObj.avatar" class="img-fluid user" style="width: 50%;">
         <!-- <i class="fa fa-user"></i> -->
     <span class="caret user"></span></div>
     <ul class="dropdown-menu" #userMnu [class.show]="showUserNav" style="margin-left: -45px;">
-      <li class="dropdown-item">{{user.firstname}}</li>
-      <li class="dropdown-item"><a href="#">Cluster</a></li>
+      <li class="dropdown-item">{{userObj.lastname}}, {{userObj.firstname}}</li>
+      <li class="dropdown-item">{{userObj.role}}</li>
+      <li class="dropdown-item"><a href="#">Profile</a></li>
     </ul>
   </div>

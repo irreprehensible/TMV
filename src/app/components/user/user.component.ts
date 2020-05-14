@@ -8,9 +8,8 @@ import { UserSVCService, user } from 'src/app/services/user-svc.service';
 })
 export class UserComponent implements OnInit {
   showUserNav:boolean = false;
-  user:user
+  userObj:user
   userSVC
-  userAvatar// = '../assets/user.gif'
   constructor(private _userSVC:UserSVCService) { 
     this.userSVC = _userSVC 
     
@@ -21,21 +20,12 @@ export class UserComponent implements OnInit {
     if(!targetElement.classList.contains('user') && this.userMnu.nativeElement.classList.contains('show'))
       this.toggleUserNav();
   }
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if(event.key=='Escape' && this.showUserNav)
-      this.showUserNav=false;
-  }
   toggleUserNav(){
     this.showUserNav = !this.showUserNav;
   }
-  
-  
 
   ngOnInit(): void {
-    this.user = this.userSVC.getUser()
-    this.userAvatar = this.user.avatar 
-    console.log('from init',this.user.avatar)
+    this.userObj = this.userSVC.getUser()
   }
 
 }

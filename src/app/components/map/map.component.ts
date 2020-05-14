@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 //import { AgmMap } from '@agm/core';
 import { MapDataService } from '../../services/map-data-svc.service';
 
@@ -9,7 +9,7 @@ import { MapDataService } from '../../services/map-data-svc.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit,AfterViewInit {
+export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
   @Input() obj:any; // for the map sent via tabs
   @ViewChild('canvas') public canvas: ElementRef; 
   @ViewChild('canvasContainer') public canvasContainer: ElementRef; 
@@ -32,6 +32,7 @@ export class MapComponent implements OnInit,AfterViewInit {
   constructor(private _mapdataservice:MapDataService) {
     this.mapdataservice=_mapdataservice;
   }
+
   onZoomChanged(e){
     console.log(e.target.value)
     this.zoom = e.target.value
@@ -59,8 +60,8 @@ export class MapComponent implements OnInit,AfterViewInit {
     this.cx = canvasEl.getContext('2d');
 
     //get dimentions
-    console.log(this.canvasContainer.nativeElement.offsetWidth)
-    console.log(this.canvasContainer.nativeElement.offsetHeight)
+    // console.log(this.canvasContainer.nativeElement.offsetWidth)
+    // console.log(this.canvasContainer.nativeElement.offsetHeight)
     this.height = this.canvasContainer.nativeElement.offsetHeight?this.canvasContainer.nativeElement.offsetHeight:161;
     this.width=this.canvasContainer.nativeElement.offsetWidth?this.canvasContainer.nativeElement.offsetWidth:1195
     //set the dimentions
@@ -87,7 +88,9 @@ export class MapComponent implements OnInit,AfterViewInit {
           }
           break;
         case 'message':
-          // this.connected=true;
+          //TODO 
+          //USE DATA TO DRAW IMAGE
+          this.connected=true;
           // let r = JSON.parse(data.data).route;
           // this.lat=r.lat;
           // this.lng  =r.lng;
@@ -108,26 +111,13 @@ export class MapComponent implements OnInit,AfterViewInit {
       }
       
     })
-    //   let l = 51.723858;
-    //   let a = 7.985982;
-    // setInterval(()=>{
-    //   l = l + 0.100000;
-    //   a = a + 0.100000;
-    //   this.markers.push({
-    //     lat: l,
-		//     lng: a,
-		//     //label: 'A',
-    //   });
-    //   if(this.markers.length > 3){
-    //       this.markers.shift();
-    //   }
-    //   this.lat=l;
-    //   this.lng =a;
-    //   //this.map.setCenter()
-    // },1000);
-    
+  
   }
-
+  ngOnDestroy(): void {
+    this.connected=false;
+    this.mapdataservice.closeServer(`http://localhost:3000/routes`);
+    console.log('[ngOnDestroy]')
+  }
 }
 // just an interface for type safety.
 interface marker {

@@ -33,4 +33,10 @@ export class MapDataService {
       }
     })
   }
+
+  closeServer(url:string):void{
+    const eventSource = this._sseService.getEventSource(url);
+    console.log('[closing server]',url)
+    eventSource.close();
+  }
 }

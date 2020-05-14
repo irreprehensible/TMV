@@ -97,8 +97,8 @@ export class HomeLinkComponent implements OnInit {
           this.fullitemList = locations
           this.items = this.fullitemList;
         }).catch(err => {
-          this.notFoundMsg='no locations found'
-          console.log('no locations!',err)
+          this.notFoundMsg=err.message;
+          console.log('no locations!',err.message)
         })
         break;
       case "userlist":

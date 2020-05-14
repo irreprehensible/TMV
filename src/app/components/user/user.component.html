@@ -1,11 +1,16 @@
 <div class="dropdown user" #user style="margin-top: -12px;" id=userComponent (click)="toggleUserNav()">
-    <div class="dropdown-toggle user" data-toggle="dropdown"  >
-        <img [src]="userObj.avatar" class="rounded-circle user" style="width: 42px;">
-        <!-- <i class="fa fa-user"></i> -->
-    <span class="caret user"></span></div>
-    <ul class="dropdown-menu" #userMnu [class.show]="showUserNav" style="margin-left: -45px;">
-      <li class="dropdown-item">{{userObj.lastname}}, {{userObj.firstname}}</li>
-      <li class="dropdown-item">{{userObj.role}}</li>
-      <li class="dropdown-item"><a role="button">Profile</a></li>
-    </ul>
+    <div *ngIf="userObj!=null; then userPresent else nouser"></div>
+    <ng-template #nouser>
+      <i class="fa fa-user fa-2x"></i>
+    </ng-template>
+    <ng-template #userPresent>
+      <div class="dropdown-toggle user" data-toggle="dropdown"  >
+          <img [src]="userObj.avatar" class="rounded-circle user" style="width: 42px;">
+      <span class="caret user"></span></div>
+      <ul class="dropdown-menu" #userMnu [class.show]="showUserNav" style="margin-left: -45px;">
+        <li class="dropdown-item">{{userObj.lastname}}, {{userObj.firstname}}</li>
+        <li class="dropdown-item">{{userObj.role}}</li>
+        <li class="dropdown-item"><a role="button">Profile</a></li>
+      </ul>
+  </ng-template>
   </div>

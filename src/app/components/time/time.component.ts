@@ -27,7 +27,7 @@ export class TimeComponent implements OnInit {
   public setTime(today) {
     let timeNow = new Date(today.getFullYear(),today.getMonth(),today.getDate(),today.getHours(),today.getMinutes(),today.getSeconds())
     let int = setInterval(() => {
-      if((timeNow.getMinutes() - today.getMinutes()) >=1){
+      if((timeNow.getMinutes() - today.getMinutes()) >=7){
         clearInterval(int);
         this.timeSVC.getGMT().then(today => this.setTime(today));
       }

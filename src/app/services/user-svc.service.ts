@@ -11,7 +11,11 @@ export class UserSVCService {
    role:'admin'
  }
  getUser(){
-   return this.user;
+   const p:Promise<user> = new Promise((resolve, reject)=>{
+     //resolve(this.user);
+     reject(new Error('user no found'))
+   })
+   return p;
  }
  getUserOptionList(){
    return [{id:1,name:'options'},{id:2,name:'opty'},{id:3,name:'openy'}]

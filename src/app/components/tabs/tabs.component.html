@@ -6,11 +6,16 @@
   <ng-content></ng-content> -->
   <ul class="nav nav-tabs">
     <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item"  >
-      <a href="#" class="nav-link" [class.active]="tab.active"><i class="{{tab.icon}}"></i>{{tab.title}}</a>
+      <a role="button" class="nav-link" [class.active]="tab.active"><i class="{{tab.icon}}"></i>{{tab.title}}</a>
     </li>
     <!-- dynamic tabs -->
     <li *ngFor="let tab of dynamicTabs" (click)="selectTab(tab)" class="nav-item"  >
-      <a href="#" class="nav-link" [class.active]="tab.active"><i class="{{tab.icon}}"></i> {{tab.title}} <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span></a>
+      <a role="button" class="nav-link" [class.active]="tab.active"><i class="{{tab.icon}}"></i> {{tab.title}} 
+        <span class="tab-close" role="button" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
+        <!-- <span><button type="button" class="close" (click)='closeTab(tab)' aria-label="Close" [hidden]="tab.isClosable">
+          <span aria-hidden="true">&times;</span>
+        </button></span> -->
+      </a>
     </li>
   </ul>
   <ng-content></ng-content>

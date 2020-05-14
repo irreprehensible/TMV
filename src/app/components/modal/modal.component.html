@@ -1,7 +1,7 @@
 <div class="modalPopUp" [hidden]="!showModalPopUp">
   <button type="button" class="close" (click)='hideModal()' aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <span aria-hidden="true">&times;</span>
+  </button>
   <!--<a><span class="modal-close" (click)="hideModal()">x</span></a>-->
     <ng-content></ng-content>
     <ng-container *ngIf="template"

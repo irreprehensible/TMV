@@ -55,7 +55,6 @@ export class HomeLinkComponent implements OnInit {
   performfilter = function (searchtext:string,FullList) {
       let filterby = searchtext.toLocaleLowerCase();
       return FullList.filter(function (item) {
-        console.log(item)
           return item.name.toLocaleLowerCase().indexOf(filterby) != -1;
       });
   }

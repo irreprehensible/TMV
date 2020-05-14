@@ -17,8 +17,12 @@ export class TrainsSVCService extends DataSVCService{
     {id:'t8',name:'train 8'},
     {id:'t9',name:'train 9'},
   ]; 
-  getTrainList(){
-    return this.t;
+  getTrainList():Promise<train[]>{
+    const p:Promise<train[]> = new Promise((resolve, reject) =>{
+      resolve(this.t)
+      // reject(new Error('Could not retrieve trains'));
+    })
+    return p;
   }
   constructor(http:HttpClient) { 
     super('',http)

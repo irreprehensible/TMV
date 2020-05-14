@@ -3,9 +3,15 @@
     <div><input placeholder="search" (keyup)="changed(searchText)" #searchText id="{{ type }}"/></div>
     <div class="inner">
         <ul class="list-group">
+            <div *ngIf="items.length >0; then itemList else noItems"></div>
+            <ng-template #noItems>
+                <div class="alert">{{notFoundMsg}}</div>
+            </ng-template>
+            <ng-template #itemList>
             <li *ngFor="let item of items"  (click)="itemClicked(item)" (contextmenu)="itemRightClicked($event,item)" class="list-group-item">
                 <span >{{item.name}}</span>
             </li>
+            </ng-template>
         </ul>
     </div>
 </div>

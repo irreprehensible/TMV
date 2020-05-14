@@ -12,7 +12,11 @@ export class RouteSVCService {
     {id:'r5',name:'route 5'},
   ]; 
   getRouteList(){
-    return this.r;
+    const p:Promise<route[]> = new Promise((resolve, reject) =>{
+      resolve(this.r)
+      //reject(new Error('Could not retrieve trains'));
+    })
+    return p;
   }
   constructor() { }
 }

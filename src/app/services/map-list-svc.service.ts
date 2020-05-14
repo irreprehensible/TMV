@@ -11,8 +11,11 @@ export class MapListSvcService {
     {id:3,name:'map3',desc:'map3 descrio'}
   ]
   getMapList(){
-     
-      return this.m;
+    const p:Promise<map[]> = new Promise((resolve, reject) =>{
+      resolve(this.m)
+      //reject(new Error('Could not retrieve trains'));
+    })
+    return p;
   }
   constructor() { }
 }

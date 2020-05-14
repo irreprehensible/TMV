@@ -5,6 +5,7 @@ import { TabsComponent } from '../tabs/tabs.component';
 import { TrainsSVCService } from '../../services/trains-svc.service';
 import { RouteSVCService } from '../../services/route-svc.service';
 import { UserSVCService } from 'src/app/services/user-svc.service';
+import { LocationSVCService } from 'src/app/services/location-svc.service';
 
 @Component({
   selector: 'home-link',
@@ -21,9 +22,11 @@ export class HomeLinkComponent implements OnInit {
 
   items:any = [];
   fullitemList =[];
+  notFoundMsg:string;
   mapList: MapListSvcService;
   trainList:TrainsSVCService;
-  routelist:RouteSVCService;
+  routeList:RouteSVCService;
+  locationList:LocationSVCService;
   userSVC:UserSVCService;
   private onClick() {
     //console.log('onClick');
@@ -42,10 +45,11 @@ export class HomeLinkComponent implements OnInit {
     //alert(`${id} clicked`);
     this.onItemClick.emit(item);
   }
-  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService, private _routelist:RouteSVCService, private _userSVC:UserSVCService) { 
+  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService, private _routeList:RouteSVCService, private _userSVC:UserSVCService, private _locationList:LocationSVCService) { 
     this.mapList = _mapList;
     this.trainList = _trainList;
-    this.routelist = _routelist;
+    this.routeList = _routeList;
+    this.locationList=_locationList;
     this.userSVC = _userSVC;
   }
   changed(searchText : HTMLInputElement){
@@ -61,16 +65,41 @@ export class HomeLinkComponent implements OnInit {
   ngOnInit(): void {
     switch (this.type) {
       case "maplist":
-        this.fullitemList = this.mapList.getMapList();
-        this.items = this.fullitemList;
+        this.mapList.getMapList().then(maps => {
+          this.fullitemList = maps
+          this.items = this.fullitemList;
+        }).catch(err => {
+          this.notFoundMsg='no maps found'
+          console.log('no maps!',err)
+        })
+        
         break;
       case "trainlist":
-        this.fullitemList = this.trainList.getTrainList();
-        this.items = this.fullitemList;
+        this.trainList.getTrainList().then(trains => {
+          this.fullitemList = trains
+          this.items = this.fullitemList;
+        }).catch(err => {
+          this.notFoundMsg='no trains found'
+          console.log('no trains!',err)
+        })
         break;
       case "routelist":
-        this.fullitemList = this.routelist.getRouteList();
-        this.items = this.fullitemList;
+        this.routeList.getRouteList().then(routes => {
+          this.fullitemList = routes
+          this.items = this.fullitemList;
+        }).catch(err => {
+          this.notFoundMsg='no routes found'
+          console.log('no routes!',err)
+        })
+        break;
+      case "locationlist":
+        this.locationList.getLocationList().then(locations => {
+          this.fullitemList = locations
+          this.items = this.fullitemList;
+        }).catch(err => {
+          this.notFoundMsg='no locations found'
+          console.log('no locations!',err)
+        })
         break;
       case "userlist":
         this.fullitemList = this.userSVC.getUserOptionList();

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
+import { timeData } from "./timeData.json";
 import { TimeSVCService } from './time-svc.service';
 
 describe('TimeSVCService', () => {
@@ -13,4 +13,9 @@ describe('TimeSVCService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  fit('should get time data',()=>{
+    service.getGMT().then(data=>{
+      expect(data).toBe(timeData);
+    })
+  })
 });

@@ -18,7 +18,7 @@ describe('MapListSvcService', () => {
     expect(service).toBeTruthy();
   });
 
-  fit('should get te map list',() =>{
+  it('should get te map list',() =>{
     service.getMapList().then(data => {
       expect(data).toEqual(m)
     });

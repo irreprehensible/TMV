@@ -20,7 +20,7 @@ agm-map {
   width:100%;
   height:47px;
   border:5px outset #ccc;
-  background-color:rgb(247, 243, 243);
+  background-color:#fff
 }
 .mapToolbar .zoomToolBox{
   display: inline-block;
@@ -39,16 +39,16 @@ agm-map {
   height: 32px;
   border-radius: 100%;
   border:1px solid #DDD;
-  display: inline-block;
+  /* display: inline-block; */
   margin-top: 3px;
   margin-right: 2px;
-  /* float: right; */
+  float: right;
 }
 .marginL{
   margin-left: -5px;
 }
 .canvasContainer{
   padding:1px;
-  border:dashed 2px #000;
+  /* border:dashed 2px #000; */
   height: 470px;
 }

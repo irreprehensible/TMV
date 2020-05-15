@@ -1,6 +1,7 @@
-import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 //import { AgmMap } from '@agm/core';
 import { MapDataService } from '../../services/map-data-svc.service';
+import { Square } from './square';
 
 
 
@@ -11,7 +12,7 @@ import { MapDataService } from '../../services/map-data-svc.service';
 })
 export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
   @Input() obj:any; // for the map sent via tabs
-  @ViewChild('canvas') public canvas: ElementRef; 
+  @ViewChild('canvas',{static:true}) public canvas: ElementRef<HTMLCanvasElement>; 
   @ViewChild('canvasContainer') public canvasContainer: ElementRef; 
 
   width = 400;
@@ -22,6 +23,9 @@ export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
   map:any
   mapdataservice:any
   connected:boolean
+  requestId;
+  interval;
+  squares: Square[] = [];
   
   // initial center position for the map
   // lat: number = 51.673858;
@@ -29,7 +33,7 @@ export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
   zoom: number = 10;
   pan:number = 10;
 
-  constructor(private _mapdataservice:MapDataService) {
+  constructor(private _mapdataservice:MapDataService, private ngZone:NgZone) {
     this.mapdataservice=_mapdataservice;
   }
 
@@ -68,13 +72,29 @@ export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
     canvasEl.width = this.width;
     canvasEl.height = this.height;
     
-    this.cx.fillStyle = "#000";
+    this.cx.fillStyle = "#ccc";
+    this.cx.fillRect(0,0,this.width,this.height)
+
+    this.cx.fillStyle="#000"
     this.cx.fillText("SAUD",10,10,100);
-    this.cx.fillRect(20,20,500,200)
+
+    this.ngZone.runOutsideAngular(() => this.redraw());
+    setInterval(() => {
+      this.redraw();
+    }, 200);
+
+    const square = new Square(this.cx);
+    this.squares = this.squares.concat(square);
   }
   redraw(){
-    
+    //uncomment for animation
+    //this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height); 
+    this.squares.forEach((square: Square) => { //if there were multiple squares
+      square.moveRight();
+    });
+    this.requestId = requestAnimationFrame(() => this.redraw())
   }
+  
   ngOnInit(): void {
     
     this.map=this.obj;
@@ -89,7 +109,7 @@ export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
           break;
         case 'message':
           //TODO 
-          //USE DATA TO DRAW IMAGE
+          //USE DATA TO DRAW IMAGE (if canvass is loaded)
           this.connected=true;
           // let r = JSON.parse(data.data).route;
           // this.lat=r.lat;
@@ -114,8 +134,11 @@ export class MapComponent implements OnInit,AfterViewInit,OnDestroy {
   
   }
   ngOnDestroy(): void {
+    clearInterval(this.interval);
+    cancelAnimationFrame(this.requestId);
+
     this.connected=false;
-    this.mapdataservice.closeServer(`http://localhost:3000/routes`);
+    this.mapdataservice.closeServer(`http://localhost:3000/routes`); //NOT WORKING
     console.log('[ngOnDestroy]')
   }
 }

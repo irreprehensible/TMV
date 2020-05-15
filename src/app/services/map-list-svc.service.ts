@@ -19,7 +19,7 @@ export class MapListSvcService {
   }
   constructor() { }
 }
-interface map{
+export interface map{
   id:number;
   name:string;
   desc?:string;

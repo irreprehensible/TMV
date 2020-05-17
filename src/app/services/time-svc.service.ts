@@ -8,7 +8,7 @@ import { error } from '@angular/compiler/src/util';
 })
 export class TimeSVCService extends DataSVCService{
   constructor(http:HttpClient){
-    super('http://worldtimeapi.org/api/timezone/Europe/London',http)
+    super('https://worldtimeapi.org/api/timezone/Europe/London',http)
   }
   getGMT(){
     console.log('[timnesvc] hit server');

@@ -13,9 +13,8 @@ describe('TimeSVCService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  fit('should get time data',()=>{
-    service.getGMT().then(data=>{
-      expect(data).toBe(timeData);
-    })
+  fit('should get time data',async ()=>{
+    const result = await service.getGMT()
+    expect(result).toBeDefined();
   })
 });

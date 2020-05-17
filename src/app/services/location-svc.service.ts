@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocationSVCService {
-  l:location[]=[
+  private l:location[]=[
     {id:1,name:'location1'},
     {id:2,name:'location2'},
     {id:3,name:'location3'},
@@ -12,8 +12,8 @@ export class LocationSVCService {
   ]
   getLocationList(){
     const p:Promise<location[]> = new Promise((resolve, reject) =>{
-      //resolve(this.l)
-      reject(new Error('Could not retrieve locations'));
+      // resolve(this.l)
+      reject(new Error('Could not retrieve locations')); //try Apperror
     })
     return p;
   }

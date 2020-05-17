@@ -62,6 +62,18 @@ export class HomeLinkComponent implements OnInit {
           return item.name.toLocaleLowerCase().indexOf(filterby) != -1;
       });
   }
+  async getLocations(){
+    const locations = await this.locationList.getLocationList().catch(err=>{
+      this.notFoundMsg=err.message;
+      console.log('no locations!',err.message)
+       return
+    });
+    //wait for locations to appear
+    if(locations){
+      this.fullitemList = locations
+      this.items = this.fullitemList
+    }
+  }
   ngOnInit(): void {
     switch (this.type) {
       case "maplist":
@@ -93,13 +105,14 @@ export class HomeLinkComponent implements OnInit {
         })
         break;
       case "locationlist":
-        this.locationList.getLocationList().then(locations => {
-          this.fullitemList = locations
-          this.items = this.fullitemList;
-        }).catch(err => {
-          this.notFoundMsg=err.message;
-          console.log('no locations!',err.message)
-        })
+        this.getLocations();
+        // this.locationList.getLocationList().then(locations => {
+        //   this.fullitemList = locations
+        //   this.items = this.fullitemList;
+        // }).catch(err => {
+        //   this.notFoundMsg=err.message;
+        //   console.log('no locations!',err.message)
+        // })
         break;
       case "userlist":
         this.fullitemList = this.userSVC.getUserOptionList();

@@ -17,5 +17,12 @@
   <modal></modal>
 
   <ng-template let-obj="obj" #profile>
-      <div class="jumbotron" style="color: black;">user profile for {{obj.firstname}}</div>
+    <div class="container">
+      <div class="card bg-light" style="color: black;">
+        <div class="card-body">
+          user profile for {{obj.firstname}}
+        </div>
+      </div>
+    </div>
+      
   </ng-template> 

@@ -24,7 +24,7 @@ export class TimeSVCService extends DataSVCService{
         let mm = obj.datetime.split('T')[1].split('.')[0].split(':')[1]
         let ss = obj.datetime.split('T')[1].split('.')[0].split(':')[2]
         let da = new Date(y,m,d,hh,mm,ss)
-        console.log(da)
+        // console.log(da)
         resolve(da)
       },err=>{
         reject(new Error(err))

@@ -19,7 +19,7 @@ export class ModalComponent {
     this.showModalPopUp =true
     this.template = template;
     this.dataContext = openObj;
-    console.log('modal!',openObj)
+    // console.log('modal!',openObj)
   }
   public hideModal(){
     this.showModalPopUp=false

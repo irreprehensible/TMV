@@ -10,7 +10,12 @@
       <ul class="dropdown-menu" #userMnu [class.show]="showUserNav" style="margin-left: -45px;">
         <li class="dropdown-item">{{userObj.lastname}}, {{userObj.firstname}}</li>
         <li class="dropdown-item">{{userObj.role}}</li>
-        <li class="dropdown-item"><a role="button">Profile</a></li>
+        <li class="dropdown-item" (click)="showProfile()" role="button">Profile</li>
       </ul>
-  </ng-template>
+    </ng-template>
   </div>
+  <modal></modal>
+
+  <ng-template let-obj="obj" #profile>
+      <div class="jumbotron" style="color: black;">user profile for {{obj.firstname}}</div>
+  </ng-template> 

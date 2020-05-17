@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { UserSVCService, user } from 'src/app/services/user-svc.service';
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'user',
@@ -15,6 +16,8 @@ export class UserComponent implements OnInit {
     
   }
   @ViewChild('userMnu') userMnu:ElementRef
+  @ViewChild('profile') profileTemplate
+  @ViewChild(ModalComponent) modalComponent;
   @HostListener('window:click', ['$event.target'])
   onClick(targetElement:HTMLElement) {
     if(this.userMnu){
@@ -26,6 +29,11 @@ export class UserComponent implements OnInit {
   }
   toggleUserNav(){
     this.showUserNav = !this.showUserNav;
+  }
+  showProfile(){
+    // console.log('user template',this.profileTemplate)
+    //refer to the store to get the complete user obj
+    this.modalComponent.showModal(this.profileTemplate, this.userObj);
   }
 
   ngOnInit(): void {

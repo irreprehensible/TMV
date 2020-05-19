@@ -4,6 +4,11 @@
     </li>
   </ul>
   <ng-content></ng-content> -->
+  <!-- <span class="fa-stack">
+    <i class="fa fa-map-o fa-stack-2x"></i>
+    <i class="fa fa-map-marker fa-stack-2x" style="color:red"></i>
+    <i class="fa fa-location-arrow fa-stack-1x"></i>
+  </span> -->
   <ul class="nav nav-tabs">
     <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item"  >
       <a role="button" class="nav-link" [class.active]="tab.active"><i class="{{tab.icon}}"></i>{{tab.title}}</a>

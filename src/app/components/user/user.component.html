@@ -10,7 +10,10 @@
       <ul class="dropdown-menu" #userMnu [class.show]="showUserNav" style="margin-left: -45px;">
         <li class="dropdown-item">{{userObj.lastname}}, {{userObj.firstname}}</li>
         <li class="dropdown-item">{{userObj.role}}</li>
-        <li class="dropdown-item" (click)="showProfile()" role="button">Profile</li>
+        <li class="dropdown-item" (click)="showProfile()" role="button">
+          <div class="btn btn-sm btn-info">Profile</div>
+        </li>
+        <li class="dropdown-item" role="button" [routerLink]="'login'">Logout</li>
       </ul>
     </ng-template>
   </div>

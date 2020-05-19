@@ -6,6 +6,7 @@ import { TrainsSVCService } from '../../services/trains-svc.service';
 import { RouteSVCService } from '../../services/route-svc.service';
 import { UserSVCService } from 'src/app/services/user-svc.service';
 import { LocationSVCService } from 'src/app/services/location-svc.service';
+import { constants } from "../../common/constants";
 
 @Component({
   selector: 'home-link',
@@ -76,7 +77,7 @@ export class HomeLinkComponent implements OnInit {
   }
   ngOnInit(): void {
     switch (this.type) {
-      case "maplist":
+      case constants.MAP:
         this.mapList.getMapList().then(maps => {
           this.fullitemList = maps
           this.items = this.fullitemList;
@@ -86,7 +87,7 @@ export class HomeLinkComponent implements OnInit {
         })
         
         break;
-      case "trainlist":
+      case constants.TRAIN:
         this.trainList.getTrainList().then(trains => {
           this.fullitemList = trains
           this.items = this.fullitemList;
@@ -95,7 +96,7 @@ export class HomeLinkComponent implements OnInit {
           console.log('no trains!',err)
         })
         break;
-      case "routelist":
+      case constants.ROUTE:
         this.routeList.getRouteList().then(routes => {
           this.fullitemList = routes
           this.items = this.fullitemList;
@@ -104,7 +105,7 @@ export class HomeLinkComponent implements OnInit {
           console.log('no routes!',err)
         })
         break;
-      case "locationlist":
+      case constants.LOCATION:
         this.getLocations();
         // this.locationList.getLocationList().then(locations => {
         //   this.fullitemList = locations
@@ -114,7 +115,7 @@ export class HomeLinkComponent implements OnInit {
         //   console.log('no locations!',err.message)
         // })
         break;
-      case "userlist":
+      case constants.USER:
         this.fullitemList = this.userSVC.getUserOptionList();
         this.items = this.fullitemList;
       default:

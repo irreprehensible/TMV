@@ -1,6 +1,7 @@
 import { Component, ViewChild, HostListener } from '@angular/core';
 import { ModalComponent } from './components/modal/modal.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { constants } from "./common/constants";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,11 @@ export class AppComponent {
   @ViewChild('route') routeTemplate
   @ViewChild(TabsComponent) tabsComponent;
   @ViewChild(ModalComponent) modalComponent;
+  maptype:string = constants.MAP;
+  traintype:string = constants.TRAIN;
+  routetype:string = constants.ROUTE;
+  locationtype:string = constants.LOCATION;
+  usertype:string = constants.USER;
   showContextMenu:boolean;
   showModalPopUp:boolean;
   eventObj:any
@@ -44,13 +50,13 @@ export class AppComponent {
   onModalClick(openObj){
     console.log('[modalclick]',openObj);
     switch (openObj.type) {
-      case "maplist":
+      case constants.MAP:
           this.modalComponent.showModal(this.mapTemplate, openObj.item);
         break;
-        case "trainlist":
+        case constants.TRAIN:
           this.modalComponent.showModal(this.trainTemplate, openObj.item);
         break;
-        case "routelist":
+        case constants.ROUTE:
           this.modalComponent.showModal(this.routeTemplate, openObj.item);
         break;
       default:
@@ -66,13 +72,13 @@ export class AppComponent {
   onTabClick(openObj){
     console.log('[openclick]',openObj);
     switch (openObj.type) {
-      case "maplist":
+      case constants.MAP:
           this.onOpenMap(openObj.item);
         break;
-        case "trainlist":
+        case constants.TRAIN:
           this.onOpenTrain(openObj.item);
         break;
-        case "routelist":
+        case constants.ROUTE:
           this.onOpenRoute(openObj.item);
         break;
       default:

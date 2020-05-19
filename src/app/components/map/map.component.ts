@@ -3,8 +3,6 @@ import { Component, OnInit,Input, ViewChild, ElementRef, AfterViewInit, OnDestro
 import { MapDataService } from '../../services/map-data-svc.service';
 import { Square } from './square';
 
-
-
 @Component({
   selector: 'map',
   templateUrl: './map.component.html',

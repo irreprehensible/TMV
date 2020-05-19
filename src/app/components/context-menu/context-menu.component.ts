@@ -17,7 +17,7 @@ export class ContextMenuComponent{
   onTabClick(){
     console.log('[cm comp.]',this.eventObj);
     let obj ={
-      type: this.eventObj.event.path[4].attributes[3].value, //this is a BUG!!!!!!!!!!!!!!!
+      type: this.eventObj.event.path[4].attributes[6].value, //this is a BUG!!!!!!!!!!!!!!!
       item:this.eventObj.item
     }
     this.tabClick.emit(obj);
@@ -25,7 +25,7 @@ export class ContextMenuComponent{
   onModalClick(){
     console.log('[cm comp.]',this.eventObj);
     let obj ={
-      type: this.eventObj.event.path[4].attributes[3].value, //this is a BUG!!!!!!!!!!!!!!!
+      type: this.eventObj.event.path[4].attributes[6].value, //this is a BUG!!!!!!!!!!!!!!!
       item:this.eventObj.item
     }
     this.modalClick.emit(obj);

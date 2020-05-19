@@ -18,10 +18,11 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
 import { RouteSVCService } from './services/route-svc.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { UserComponent } from './components/user/user.component';
-import { AppErroHandler } from './common/app-error-handler';
+//import { AppErroHandler } from './common/app-error-handler';
 import { HttpClientModule } from '@angular/common/http';
 import { UserSVCService } from './services/user-svc.service';
 import { LocationSVCService } from './services/location-svc.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { LocationSVCService } from './services/location-svc.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule
     // AgmCoreModule.forRoot({
     //   apiKey:''
     // })

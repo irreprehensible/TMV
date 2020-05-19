@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserSVCService } from './services/user-svc.service';
 import { LocationSVCService } from './services/location-svc.service';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
     ContextMenuComponent,
     ModalComponent,
     UserComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { RouteSVCService } from '../../services/route-svc.service';
 import { UserSVCService } from 'src/app/services/user-svc.service';
 import { LocationSVCService } from 'src/app/services/location-svc.service';
 import { constants } from "../../common/constants";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home-link',
@@ -43,10 +44,11 @@ export class HomeLinkComponent implements OnInit {
     return false;
   }
   itemClicked(item){
-    //alert(`${id} clicked`);
-    this.onItemClick.emit(item);
+    //console.log(this.type)
+    //this.onItemClick.emit(item);
+    this._router.navigate([this.type,item.id])
   }
-  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService, private _routeList:RouteSVCService, private _userSVC:UserSVCService, private _locationList:LocationSVCService) { 
+  constructor(private _mapList:MapListSvcService, private _trainList:TrainsSVCService, private _routeList:RouteSVCService, private _userSVC:UserSVCService, private _locationList:LocationSVCService,private _router:Router) { 
     this.mapList = _mapList;
     this.trainList = _trainList;
     this.routeList = _routeList;

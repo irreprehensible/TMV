@@ -17,6 +17,14 @@ export class MapListSvcService {
     })
     return p;
   }
+  getMapById(id){
+//    return this.m[id-1]
+    const p:Promise<map> = new Promise((resolve, reject) =>{
+      resolve(this.m[id-1]) // this isnt correct
+      //reject(new Error('Could not retrieve trains'));
+    })
+    return p;
+  }
   constructor() { }
 }
 export interface map{

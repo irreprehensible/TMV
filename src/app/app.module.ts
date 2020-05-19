@@ -22,7 +22,7 @@ import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserSVCService } from './services/user-svc.service';
 import { LocationSVCService } from './services/location-svc.service';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    // AppRoutingModule
     // AgmCoreModule.forRoot({
     //   apiKey:''
     // })

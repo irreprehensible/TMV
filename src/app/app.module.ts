@@ -22,7 +22,10 @@ import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserSVCService } from './services/user-svc.service';
 import { LocationSVCService } from './services/location-svc.service';
-// import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +41,14 @@ import { LocationSVCService } from './services/location-svc.service';
     ContextMenuComponent,
     ModalComponent,
     UserComponent,
+    HomeComponent,
+    NotfoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    // AppRoutingModule
+    AppRoutingModule
     // AgmCoreModule.forRoot({
     //   apiKey:''
     // })

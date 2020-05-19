@@ -1,0 +1,45 @@
+<navbar></navbar>
+<div style="height:10px;"></div>
+<div>
+  <tabs>
+  <tab tabTitle="home" icon="fa fa-home" [active]='true'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <home-link titleHead="maps" icon='../assets/map-icon.png' type={{maptype}} (onItemClick)="onOpenMap($event)" (onItemRightClick)="showMenu($event)"></home-link>
+        </div>
+        <div class="col-md-4">
+          <home-link titleHead="trains" icon='../assets/train-icon.png' type="{{traintype}}" (onItemClick)="onOpenTrain($event)" (onItemRightClick)="showMenu($event)"></home-link>
+        </div>
+        <div class="col-md-4">
+          <home-link titleHead="routes" icon='../assets/route-icon.png' type="{{routetype}}" (onItemClick)="onOpenRoute($event)" (onItemRightClick)="showMenu($event)"></home-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <home-link titleHead="locations" icon="../assets/location-icon.png" type="{{locationtype}}" ></home-link>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-7">
+          <home-link titleHead="users" icon="../assets/user-icon.png" type="{{usertype}}" ></home-link>
+        </div>
+      </div>
+    </div>
+  </tab>
+  </tabs>
+</div>
+
+<context-menu [eventObj]="eventObj"[x]="xPosTabMenu" [y]="yPosTabMenu" [hidden]="!showContextMenu" (tabClick)="onTabClick($event)" (modalClick)="onModalClick($event)"></context-menu>
+<modal></modal>
+
+<ng-template let-obj="obj" #map>
+  <map [obj]="obj"></map>
+</ng-template>
+
+<ng-template let-obj="obj" #train>
+  <div>Train {{obj.id}}:{{obj.name}}</div>
+</ng-template>
+
+<ng-template let-obj="obj" #route>
+  <div>Route {{obj.id}}:{{obj.name}}</div>
+</ng-template>

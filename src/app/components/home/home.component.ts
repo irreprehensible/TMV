@@ -31,12 +31,6 @@ export class HomeComponent{
     isLiked:false,
     likeCount:0
   };
-  
-  incrLike(isLiked){
-    console.log('liked',isLiked);
-    if(isLiked) this.likeLoad.likeCount++;
-    else this.likeLoad.likeCount--;
-  }
 
   showMenu(eventObj){
     this.eventObj = eventObj;
@@ -47,7 +41,7 @@ export class HomeComponent{
     //console.log('[appcomponent]',eventObj);
   }
   onModalClick(openObj){
-    console.log('[modalclick]',openObj);
+    //console.log('[modalclick]',openObj);
     switch (openObj.type) {
       case constants.MAP:
           this.modalComponent.showModal(this.mapTemplate, openObj.item);
@@ -61,9 +55,6 @@ export class HomeComponent{
       default:
         break;
     }
-    
-    // if(openObj)
-    //   this.showModalPopUp=true
   }
   private hideMenu(){
     this.showContextMenu=false;

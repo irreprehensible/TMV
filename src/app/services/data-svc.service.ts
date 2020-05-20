@@ -10,8 +10,7 @@ export class DataSVCService {
 
   getAll(){
     return this.http.get(this.url)
-      .pipe(retry(1))
-      .pipe(catchError(this.errorHandle));
+      .pipe(retry(1), catchError(err => this.errorHandle(err)));
   }
 
   private errorHandle(error: Response){

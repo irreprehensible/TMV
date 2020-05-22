@@ -36,7 +36,7 @@ export class TimeComponent implements OnInit {
         let h = this.checkTime(timeNow.getHours());
         let m = this.checkTime(timeNow.getMinutes());
         let s = this.checkTime(timeNow.getSeconds());
-        this.time = h + ":" + m + ":" + s;   
+        this.time = `${timeNow.toLocaleDateString()} ${h}:${m}:${s}`;   
       }
     }, 1000);
   }

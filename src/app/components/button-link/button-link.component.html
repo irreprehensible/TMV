@@ -1,11 +1,22 @@
-<div class="dropdown button-link" (click)="toggleUserNav()" style="border: 1px solid red;width: max-content;">
+<div class="dropdown button-link" (click)="toggleUserNav($event)" style="border: 1px solid red;width: max-content;">
     <button class="btn btn-secondary button-link" type="button">
       <img [src]=icon style="width: 23px;height:23px" class="button-link"/>
     </button>
-    <div class="dropdown-menu" [class.show]="showBtn" #btnMnu >
-      <a class="dropdown-item" href="#" *ngFor="let item of listItems">{{item.name}}</a>
-    </div>
+    <ul class="dropdown-menu" [class.show]="showBtn" #btnMnu >
+      <li class="dropdown dropdown-submenu button-link-sub" *ngFor="let item of listItems">
+        <div role="button" class="button-link-sub" (click)="showSubmenu($event,item)">{{item.id}}-{{item.name}}</div>
+        <div #subMenu style="width: 100px;height: 100px;border: 1px solid red;position: absolute;left:161px;top:1px;background-color: white;" [hidden]="item.id !=subMnuId">
+            <ul style="list-style:none">
+                <li role="button" (click)="subMenuAction()">item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </div>
+      </li>
+    </ul>
   </div>
+  
   <!-- <div class="dropdown btn-list" #user style="margin-top: -12px;" id=userComponent (click)="toggleUserNav()" style="border:1px solid red">
   <div class="dropdown-toggle button-link" data-toggle="dropdown">
     <div class="btn"><img [src]="icon" class="rounded-circle user" style="width: 42px;"></div>

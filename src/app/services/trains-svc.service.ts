@@ -28,7 +28,7 @@ export class TrainsSVCService extends DataSVCService{
     super('',http)
   }
 }
-interface train{
+export interface train{
   id:any;
   name:string
 }

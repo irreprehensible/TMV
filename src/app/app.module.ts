@@ -26,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
+import { ButtonLinkComponent } from './components/button-link/button-link.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     NotfoundComponent,
     LoginComponent,
+    ButtonLinkComponent,
   ],
   imports: [
     BrowserModule,

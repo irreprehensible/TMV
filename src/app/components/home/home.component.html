@@ -6,6 +6,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
+          <button-link icon="../assets/train-icon.png" title="loc" type="locationList"></button-link>
+        </div>
+        <div class="col-md-4">
+          <button-link icon="../assets/map-icon.png" title="map" type="mapList"></button-link>
+        </div>
+        <div class="col-md-4">
+          <button-link icon="../assets/map-icon.png" title="map" type="trainList"></button-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <home-link titleHead="maps" icon='../assets/map-icon.png' type={{maptype}} (onItemClick)="onOpenMap($event)" (onItemRightClick)="showMenu($event)"></home-link>
         </div>
         <div class="col-md-4">

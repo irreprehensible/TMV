@@ -1,0 +1,16 @@
+<div class="dropdown button-link" (click)="toggleUserNav()" style="border: 1px solid red;width: max-content;">
+    <button class="btn btn-secondary button-link" type="button">
+      <img [src]=icon style="width: 23px;height:23px" class="button-link"/>
+    </button>
+    <div class="dropdown-menu" [class.show]="showBtn" #btnMnu >
+      <a class="dropdown-item" href="#" *ngFor="let item of listItems">{{item.name}}</a>
+    </div>
+  </div>
+  <!-- <div class="dropdown btn-list" #user style="margin-top: -12px;" id=userComponent (click)="toggleUserNav()" style="border:1px solid red">
+  <div class="dropdown-toggle button-link" data-toggle="dropdown">
+    <div class="btn"><img [src]="icon" class="rounded-circle user" style="width: 42px;"></div>
+    <span class="caret user"></span></div>
+    <ul class="dropdown-menu" [class.show]="showBtn" #btnMnu style="margin-left: -45px;" *ngFor="let item of listItems">
+         <li class="dropdown-item">{{item.name}}</li>
+    </ul>
+  </div> -->

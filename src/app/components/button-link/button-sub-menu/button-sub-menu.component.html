@@ -1,0 +1,5 @@
+{{type}} {{itemId}}
+
+<ul *ngFor="let item of itemList" style="list-style: none;">
+    <li role="button" class="list-group-item" (click)="subMenuAction(item)">{{item.id}}-{{item.name}}</li>
+</ul>

@@ -24,6 +24,18 @@ export class TrainsSVCService extends DataSVCService{
     })
     return p;
   }
+  getTrainsByLocation(locationId):Promise<train[]>{
+    const p:Promise<train[]> = new Promise((resolve,reject) => {
+      let tempt = [
+        {id:'t6',name:'train 6'},
+        {id:'t7',name:'train 7'},
+        {id:'t8',name:'train 8'},
+        {id:'t9',name:'train 9'},
+      ]
+      resolve(tempt)
+    })
+    return p;
+  }
   constructor(http:HttpClient) { 
     super('',http)
   }

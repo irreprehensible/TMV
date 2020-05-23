@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { TrainsSVCService, train } from 'src/app/services/trains-svc.service';
+import{ ButtonSubMenuComponent } from './button-sub-menu/button-sub-menu.component'
+import { constants } from "../../common/constants";
+import { ListSVCService } from 'src/app/services/list-svc.service';
 
 @Component({
   selector: 'button-link',
@@ -7,39 +10,42 @@ import { TrainsSVCService, train } from 'src/app/services/trains-svc.service';
   styleUrls: ['./button-link.component.css']
 })
 export class ButtonLinkComponent implements OnInit {
-  @ViewChild('btnMnu') btnMnu:ElementRef
+  @ViewChild('btnMnu') btnMnuEl:ElementRef
+  @ViewChild('subMnu') subMnuEl:ElementRef
   @Input() icon:string
   @Input() title:string
   @Input() type:string
-  showBtn:boolean
-  subMnu:boolean
+  showBtnMnu:boolean
+  showSubMnu:boolean
   subMnuId:any =''
   listItems
   @HostListener('window:click', ['$event.target'])
   onClick(targetElement:HTMLElement) {
     // console.log(targetElement)
-    
     if(!targetElement.classList.contains('button-link') && !targetElement.classList.contains('button-link-sub') ){
-      this.showBtn=false
+      this.showBtnMnu=false
       this.subMnuId='';
     }
   }
-  constructor(private _trainSVC:TrainsSVCService) { }
-  toggleUserNav(event){
+  constructor(private _listSVC:ListSVCService) { }
+  toggleBtnMenu(event){
     //console.log(event.target.classList.value.indexOf('button-link-sub'))
     if(event.target.classList.value.indexOf('button-link-sub')<0)
-    this.showBtn = !this.showBtn;
+    this.showBtnMnu = !this.showBtnMnu;
   }
-  showSubmenu(event,item){
+  showSubmenu(item){
     this.subMnuId=item.id;
-    console.log(event);
+    // let el:HTMLElement = this.subMnuEl.nativeElement
+    //console.log(el);
+    //get data
+    // el.innerHTML = `${item.id} links`
   }
   subMenuAction(){
     this.subMnuId='';
-    console.log('submenu action')
+    console.log('submenu action from button-link')
   }
   ngOnInit(): void {
-    this._trainSVC.getTrainList().then(trains => this.listItems=trains)
+    this._listSVC.getLocationList().then(locations => this.listItems=locations)
   }
 
 }

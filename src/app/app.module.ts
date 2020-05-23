@@ -27,6 +27,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
 import { ButtonLinkComponent } from './components/button-link/button-link.component';
+import { ListSVCService } from './services/list-svc.service';
+import { ButtonSubMenuComponent } from './components/button-link/button-sub-menu/button-sub-menu.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ButtonLinkComponent } from './components/button-link/button-link.compon
     NotfoundComponent,
     LoginComponent,
     ButtonLinkComponent,
+    ButtonSubMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { ButtonLinkComponent } from './components/button-link/button-link.compon
     TrainsSVCService,
     RouteSVCService,
     UserSVCService,
-    LocationSVCService
+    LocationSVCService,
+    ListSVCService
     //{provide:ErrorHandler, useClass:AppErroHandler}
   ],
   bootstrap: [AppComponent]

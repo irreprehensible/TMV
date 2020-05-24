@@ -1,0 +1,30 @@
+[
+    {
+        "id":"reg1",
+        "name":"London North East"
+    },
+    {
+        "id":"reg2",
+        "name":"East Anglia"
+    },
+    {
+        "id":"reg3",
+        "name":"Great Western"
+    },
+    {
+        "id":"reg4",
+        "name":"Midlands"
+    },
+    {
+        "id":"reg5",
+        "name":"North West"
+    },
+    {
+        "id":"reg6",
+        "name":"Scotland"
+    },
+    {
+        "id":"reg7",
+        "name":"Southern"
+    }
+]

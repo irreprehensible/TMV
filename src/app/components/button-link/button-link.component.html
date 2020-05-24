@@ -3,9 +3,11 @@
     <img [src]=icon style="width: 23px;height:23px" class="button-link"/>
   </button>
   <ul class="dropdown-menu" [class.show]="showBtnMnu" #btnMnu >
-    <li class="dropdown dropdown-submenu button-link-sub" *ngFor="let item of listItems">
-      <div role="button" class="button-link-sub list-group-item" (click)="showSubmenu(item)">{{item.id}}-{{item.name}}</div>
-      <div #subMenu style="border: 1px solid red;position: absolute;left:161px;top:1px;background-color: white;" data-id="{{item.id}}" [hidden]="item.id !=subMnuId">
+    <li class="dropdown button-link-sub" *ngFor="let item of listItems$ | async">
+      <div role="button" class="button-link-sub" (click)="showSubmenu(item)">{{item.name}}
+        <span class="fa" style="float: right;" [class.fa-angle-right]="item.id===subMnuId"></span>
+      </div>
+      <div #subMenu style="border: 1px solid red;width:max-content;position: absolute;left:161px;top:1px;background-color: white;" data-id="{{item.id}}" [hidden]="item.id !=subMnuId">
           <button-sub-menu [type]=type [itemId]="item.id"></button-sub-menu>
       </div>
     </li>

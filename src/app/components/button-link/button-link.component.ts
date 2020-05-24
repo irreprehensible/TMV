@@ -18,7 +18,7 @@ export class ButtonLinkComponent implements OnInit {
   showBtnMnu:boolean
   showSubMnu:boolean
   subMnuId:any =''
-  listItems
+  listItems$
   @HostListener('window:click', ['$event.target'])
   onClick(targetElement:HTMLElement) {
     // console.log(targetElement)
@@ -45,7 +45,8 @@ export class ButtonLinkComponent implements OnInit {
     console.log('submenu action from button-link')
   }
   ngOnInit(): void {
-    this._listSVC.getLocationList().then(locations => this.listItems=locations)
+    // this._listSVC.getLocationList().then(locations => this.listItems=locations)
+    this.listItems$ = this._listSVC.getRegions()
   }
 
 }

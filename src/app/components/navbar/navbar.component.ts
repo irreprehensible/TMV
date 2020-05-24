@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { TimeComponent } from '../time/time.component';
 import { UserComponent } from '../user/user.component'
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'navbar',
@@ -9,7 +10,8 @@ import { UserComponent } from '../user/user.component'
   host:{'(click)':'hideMenu()'}
 })
 export class NavbarComponent implements OnInit {
-
+  @ViewChild(ModalComponent) modalComponent
+  @ViewChild('profile') profileTemplate
   navbarOpen:boolean;
   brand ="TMV";
   userNavOpen:boolean;
@@ -24,6 +26,9 @@ export class NavbarComponent implements OnInit {
     // this.navbarOpen=false;
     // if(this.userNavOpen)
     // this.userNavOpen=false;
+  }
+  opnenKey(){
+    this.modalComponent.showModal(this.profileTemplate, null);
   }
   constructor() { }
   

@@ -1,6 +1,6 @@
 {{type}} {{itemId}}
 
 <!-- <ul  style="list-style: none;"> -->
-    <div *ngFor="let item of itemList" role="button"  (click)="subMenuAction(item)">{{item.name}}</div>
+    <div *ngFor="let item of itemList" role="button"  (click)="subMenuAction(item)" [routerLink]="'map/1'">{{item.name}}</div>
     <!-- <li *ngFor="let item of itemList" role="button"  (click)="subMenuAction(item)"><span>{{item.id}}-{{item.name}}</span></li> -->
 <!-- </ul> -->

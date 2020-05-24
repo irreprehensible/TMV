@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
   styleUrls: ['./time.component.css']
 })
 export class TimeComponent implements OnInit {
-  time:string="--:--:--"
+  time:Date//="--:--:--"
   timeSVC:TimeSVCService;
   constructor( private _time:TimeSVCService) {
     this.timeSVC = _time;
@@ -33,10 +33,10 @@ export class TimeComponent implements OnInit {
       }
       else{
         timeNow.setSeconds(timeNow.getSeconds()+1); 
-        let h = this.checkTime(timeNow.getHours());
-        let m = this.checkTime(timeNow.getMinutes());
-        let s = this.checkTime(timeNow.getSeconds());
-        this.time = `${timeNow.toLocaleDateString()} ${h}:${m}:${s}`;   
+        // let h = this.checkTime(timeNow.getHours());
+        // let m = this.checkTime(timeNow.getMinutes());
+        // let s = this.checkTime(timeNow.getSeconds());
+        this.time = timeNow;//`${timeNow.toLocaleDateString()} ${h}:${m}:${s}`;   
       }
     }, 1000);
   }
